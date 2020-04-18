@@ -9,7 +9,9 @@ public class AnimTriggers : MonoBehaviour
     {
         foreach (var attackPoint in this.GetComponentsInChildren<DamageDealer>())
         {
-            attackPoint.enabled = !attackPoint.enabled;
+            var col = attackPoint.GetComponent<Collider>();
+            col.enabled = !col.enabled;
+            //attackPoint.enabled = !attackPoint.enabled;
         }
     }
 }

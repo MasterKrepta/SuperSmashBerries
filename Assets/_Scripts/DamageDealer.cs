@@ -20,6 +20,7 @@ public class DamageDealer : MonoBehaviour
         var target = other.GetComponentInParent<IDamagable>();
         if (target != null)
         {
+            //print(this.name + " caused death");
             target.TakeDamage(dmgAmount);
         }
     }

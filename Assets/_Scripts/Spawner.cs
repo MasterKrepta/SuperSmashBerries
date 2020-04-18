@@ -23,16 +23,27 @@ public class Spawner : MonoBehaviour
     }
 
 
-    void StartWave()
+    public void StartWave()
     {
-        enemiesRemaining = numEnemies;
-        for (int i = 0; i < numEnemies; i++)
-        {
-            //todo add delay to prevent spawning on top of each other
-                int randEnemy = Random.Range(0, Enemies.Length);
-                int randSpawnPoints = Random.Range(0, SpawnPoints.Length);
+        enemiesRemaining = 0;
+        InvokeRepeating("SpawnEnemy", delayBetweenSpawn, delayBetweenSpawn);
+    }
 
-                Instantiate(Enemies[randEnemy], SpawnPoints[randSpawnPoints].position, Quaternion.identity);
+
+    void SpawnEnemy()
+    {
+
+        if (enemiesRemaining < numEnemies)
+        {
+            enemiesRemaining++;
+            int randEnemy = Random.Range(0, Enemies.Length);
+            int randSpawnPoints = Random.Range(0, SpawnPoints.Length);
+
+            Instantiate(Enemies[randEnemy], SpawnPoints[randSpawnPoints].position, Quaternion.identity);
+        }
+        else
+        {
+            CancelInvoke();
         }
     }
 
@@ -56,4 +67,7 @@ public class Spawner : MonoBehaviour
         //TODO set up between the waves
         Invoke("StartWave", StartTime);
     }
+
+
+    
 }

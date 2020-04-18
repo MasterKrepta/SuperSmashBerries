@@ -17,20 +17,19 @@ public class RotateCamera : MonoBehaviour
 
     public float rotSpeed = 5.0f;
 
-    // Use this for initialization
+    
     void Start()
     {
         offset = transform.position - player.position;
     }
 
-    // LateUpdate is called after Update methods
+    
     void LateUpdate()
     {
 
         if (orbitPlayer)
         {
-            Quaternion camAngle =
-                Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotSpeed, Vector3.up);
+            Quaternion camAngle = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * rotSpeed, Vector3.up);
 
             offset = camAngle * offset;
         }
@@ -40,6 +39,9 @@ public class RotateCamera : MonoBehaviour
         transform.position = Vector3.Slerp(transform.position, newPos, smoothing);
 
         if (LookAtPlayer || orbitPlayer)
+        {
             transform.LookAt(player);
+        }
+            
     }
 }
