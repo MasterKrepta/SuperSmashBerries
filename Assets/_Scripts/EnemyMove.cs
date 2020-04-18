@@ -7,12 +7,29 @@ public class EnemyMove : MonoBehaviour
     public Transform player;
     public float moveSpeed = 5f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void OnEnable()
+    {
+        GameTriggers.OnPlayerAssigned += AssignPlayer;
+    }
+
+    private void OnDisable()
+    {
+        GameTriggers.OnPlayerAssigned -= AssignPlayer;
+
+    }
+
+    private void Start()
+    {
+        AssignPlayer(); 
+    }
+    
+    void AssignPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
+
+    public 
     // Update is called once per frame
     void Update()
     {

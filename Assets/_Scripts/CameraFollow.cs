@@ -11,9 +11,27 @@ public class CameraFollow : MonoBehaviour
 
     Vector3 vel = Vector3.zero;
 
-    // Use this for initialization
-    void awake()
+
+    private void OnEnable()
     {
+        GameTriggers.OnPlayerAssigned += AssignPlayer;
+    }
+
+    private void OnDisable()
+    {
+        GameTriggers.OnPlayerAssigned -= AssignPlayer;
+
+    }
+
+    void AssignPlayer()
+    {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
+    // Use this for initialization
+    void Awake()
+    {
+        AssignPlayer();
         transform.position = player.position + offset;
     }
 

@@ -22,6 +22,15 @@ public class Spawner : MonoBehaviour
         Invoke("StartWave", StartTime);
     }
 
+    private void OnEnable()
+    {
+        GameTriggers.OnWaveEnd += IncrementWave;
+    }
+
+    private void OnDisable()
+    {
+        GameTriggers.OnWaveEnd -= IncrementWave;
+    }
 
     public void StartWave()
     {
@@ -32,10 +41,12 @@ public class Spawner : MonoBehaviour
 
     void SpawnEnemy()
     {
-
-        if (enemiesRemaining < numEnemies)
+        
+        if (enemiesRemaining <= numEnemies)
         {
+            //TODO this can cause a bug where we kill someone before the spawning is finished and cause spawing to never end. may not be a problem with the real level design
             enemiesRemaining++;
+            
             int randEnemy = Random.Range(0, Enemies.Length);
             int randSpawnPoints = Random.Range(0, SpawnPoints.Length);
 
@@ -55,7 +66,8 @@ public class Spawner : MonoBehaviour
 
         if (enemiesRemaining <= 0 )
         {
-            IncrementWave();
+            GameTriggers.OnWaveEnd();
+            
             print("New Wave");
         }
     }

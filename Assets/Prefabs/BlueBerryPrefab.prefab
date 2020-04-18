@@ -38,6 +38,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 105803ce3dbba6d4bbed4ad6350fd7b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Projectile: {fileID: 6566004201615285297, guid: f25dd2f438196d041ab40b00b19f0c07,
+    type: 3}
+  throwPoint: {fileID: 3571347442163756098}
+--- !u!95 &5177670142832124382
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1319919567151184728}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dac7a18568686514392dbf349109634a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!135 &7710945099505533339
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -465,6 +487,12 @@ PrefabInstance:
 --- !u!1 &564252098456018513 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 057dcb462d6b72944846f32e272e12b5,
+    type: 3}
+  m_PrefabInstance: {fileID: 8427727340228970328}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &3571347442163756098 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4216859302048453862, guid: 057dcb462d6b72944846f32e272e12b5,
     type: 3}
   m_PrefabInstance: {fileID: 8427727340228970328}
   m_PrefabAsset: {fileID: 0}

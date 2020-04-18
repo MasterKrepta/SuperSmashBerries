@@ -11,6 +11,15 @@ public class CharacterSelect : MonoBehaviour
     public GameObject selectscreen;
 
 
+    private void OnEnable()
+    {
+        GameTriggers.OnWaveEnd += DisplaySelectScreen;
+    }
+
+    private void OnDisable()
+    {
+        GameTriggers.OnWaveEnd -= DisplaySelectScreen;
+    }
     //DEBUG
     private void Update()
     {
@@ -47,6 +56,7 @@ public class CharacterSelect : MonoBehaviour
 
         activeCharacter = character;
         character.tag = "Player";
+        GameTriggers.OnPlayerAssigned();
         selectscreen.SetActive(false);
         Time.timeScale = 1;
     }
@@ -56,10 +66,8 @@ public class CharacterSelect : MonoBehaviour
         foreach (var c in Characters)
         {
             var scripts = c.GetComponents<MonoBehaviour>();
-            print(scripts.Length + "found in " + c.name);
             foreach (var s in scripts)
             {
-                print(s.name + " disabled");
                 s.enabled = false;
             }
             c.tag = "Untagged";
