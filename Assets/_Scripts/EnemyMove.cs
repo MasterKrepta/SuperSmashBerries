@@ -34,5 +34,6 @@ public class EnemyMove : MonoBehaviour
     void Update()
     {
         transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed);
+        transform.LookAt(player.position);
     }
 }
