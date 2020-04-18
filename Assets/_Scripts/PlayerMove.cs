@@ -15,7 +15,7 @@ public class PlayerMove : MonoBehaviour
     public LayerMask Ground;
 
     private Rigidbody rb;
-    private Vector3 _inputs = Vector3.zero;
+    private Vector3 input = Vector3.zero;
     private bool _isGrounded = true;
     private Transform grounded;
 
@@ -31,21 +31,19 @@ public class PlayerMove : MonoBehaviour
         _isGrounded = Physics.CheckSphere(grounded.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
 
 
-        _inputs = Vector3.zero;
-        _inputs.x = Input.GetAxis("Horizontal");
-        _inputs.z = Input.GetAxis("Vertical");
-        if (_inputs != Vector3.zero)
-            transform.forward = _inputs;
+        input = Vector3.zero;
+        input.x = Input.GetAxis("Horizontal");
+        input.z = Input.GetAxis("Vertical");
+        if (input != Vector3.zero)
+            transform.forward = input;
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
             rb.AddForce(Vector3.up * JumpHeight, ForceMode.Impulse);
-            //rb.AddForce(Vector3.up * Mathf.Sqrt(JumpHeight * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+            
         }
         
     }
-
-  
 
     
     private void ModifyVelocityWhenJumping()
@@ -70,7 +68,7 @@ public class PlayerMove : MonoBehaviour
             ModifyVelocityWhenJumping();
         }
         
-        rb.MovePosition(rb.position + _inputs * Speed * Time.fixedDeltaTime);
+        rb.MovePosition(rb.position + input * Speed * Time.fixedDeltaTime);
     }
 
 }
