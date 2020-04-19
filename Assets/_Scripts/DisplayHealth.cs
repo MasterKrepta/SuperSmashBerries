@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DisplayHealth : MonoBehaviour
 {
     public PlayerHealth Character;
+    public Button btn;
     Image slider;
 
     private void Start()
@@ -24,6 +25,14 @@ public class DisplayHealth : MonoBehaviour
 
     void UpdateDisplay()
     {
-        slider.fillAmount = Character.CurrentHealth / Character.MaxHealth;
+        if (slider != null)
+        {
+            slider.fillAmount = Character.CurrentHealth / Character.MaxHealth;
+            if (Character.CurrentHealth <= 0)
+            {
+                btn.interactable = false;
+            }
+        }
+        
     }
 }

@@ -23,6 +23,12 @@ public class PlayerHealth : MonoBehaviour, IDamagable
             CurrentHealth--;
             Invoke("ResetInvulnerability", resetTime);
 
+            if (CurrentHealth <= 0)
+            {
+                GameTriggers.OnWaveEnd();
+                //todo kill player gameobject saftley
+                //this.gameObject.SetActive(false);
+            }
             StartCoroutine(Flash());
         }
       

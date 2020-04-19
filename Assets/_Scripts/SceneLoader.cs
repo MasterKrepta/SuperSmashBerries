@@ -2,12 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class SceneLoader : MonoBehaviour
 {
-
+    [SerializeField] Sprite[] tuts;
+    [SerializeField] GameObject tutorial, mainMenu, btnNext, btnLoad;
     private void OnEnable()
     {
+        if (tutorial != null)
+        {
+            tutorial.SetActive(false);
+        }
         GameTriggers.OnGameStart += LoadGame;
         GameTriggers.OnGameEnd += LoadGameOver;
         GameTriggers.OnGameRestart += onRestartBtn;
@@ -25,6 +31,21 @@ public class SceneLoader : MonoBehaviour
     public void LoadGame()
     {
         SceneManager.LoadScene(1);
+    }
+
+    public void LoadTutorial()
+    {
+        tutorial.SetActive(true);
+        mainMenu.SetActive(false);
+        tutorial.GetComponentInChildren<Image>().sprite = tuts[0];
+    }
+
+
+    public void NextPage()
+    {
+        tutorial.GetComponentInChildren<Image>().sprite = tuts[1];
+        btnNext.SetActive(false);
+        btnLoad.SetActive(true);
     }
 
     void LoadGameOver()

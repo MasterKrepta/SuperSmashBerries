@@ -32,6 +32,7 @@ public class Spawner : MonoBehaviour
         GameTriggers.OnPlayerAssigned -= IncrementWave;
     }
 
+
     public void StartWave()
     {
         enemiesRemaining = 0;
@@ -109,7 +110,7 @@ public class Spawner : MonoBehaviour
     {
         numEnemies =  Mathf.CeilToInt(numEnemies * 1.5f);
 
-        //TODO set up between the waves
+        
         Invoke("StartWave", StartTime);
     }
 

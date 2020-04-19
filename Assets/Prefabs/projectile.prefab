@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6757471646496573051}
   - component: {fileID: 7734323802051802493}
   - component: {fileID: -7327338023927075040}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -252,7 +252,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: d7ba23ca5cd156e4baddfafe8e44be05,
         type: 3}
       propertyPath: m_Layer
-      value: 10
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7ba23ca5cd156e4baddfafe8e44be05, type: 3}

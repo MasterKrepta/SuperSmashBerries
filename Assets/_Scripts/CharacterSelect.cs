@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CharacterSelect : MonoBehaviour
 {
@@ -44,6 +45,8 @@ public class CharacterSelect : MonoBehaviour
         selectscreen.SetActive(true);
         DisablePlayerScripts();
         Time.timeScale = 0;
+
+     
 
     }
 
