@@ -4,6 +4,17 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamagable
 {
+
+    private void OnEnable()
+    {
+        GameTriggers.OnWaveEnd += DestroyOnWaveEnd;
+    }
+
+    private void OnDisable()
+    {
+        GameTriggers.OnWaveEnd -= DestroyOnWaveEnd;
+    }
+
     public void TakeDamage(float dmg)
     {
 
@@ -11,15 +22,9 @@ public class EnemyHealth : MonoBehaviour, IDamagable
         Destroy(gameObject);
     }
 
-    // Start is called before the first frame update
-    void Start()
+  
+    void DestroyOnWaveEnd()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Destroy(gameObject);
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8881190175726397924}
   - component: {fileID: 6757471646496573051}
   - component: {fileID: 7734323802051802493}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 210924c6dc7d33044b28eb7fc96379dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explodeTime: 2
+  explodeTime: 1.5
   lifeTime: 0.25
   dmg: 100
 --- !u!135 &7734323802051802493
@@ -149,6 +149,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: seed
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: d7ba23ca5cd156e4baddfafe8e44be05,
+        type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d7ba23ca5cd156e4baddfafe8e44be05, type: 3}

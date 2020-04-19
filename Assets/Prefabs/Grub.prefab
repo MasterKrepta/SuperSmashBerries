@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 6427498966000915264}
   - component: {fileID: 8865465119503734449}
   - component: {fileID: 7891542140817933275}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: attack
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -151,7 +151,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddbe5349a61eae40ab5fb8dbe8838cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgAmount: 5
+  dmgAmount: 1
 --- !u!1001 &1363790188774823694
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -218,6 +218,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Grub
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 338ce487475015644ad19086b8a22610,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 338ce487475015644ad19086b8a22610, type: 3}

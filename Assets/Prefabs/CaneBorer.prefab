@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 817540866788675911}
   - component: {fileID: 2163253666673220435}
   - component: {fileID: 5901463372510331193}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: attack
   m_TagString: Untagged
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -57,7 +57,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fddbe5349a61eae40ab5fb8dbe8838cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgAmount: 5
+  dmgAmount: 2
 --- !u!1 &3398416762248920977
 GameObject:
   m_ObjectHideFlags: 0
@@ -71,7 +71,7 @@ GameObject:
   - component: {fileID: 8451942056872201495}
   - component: {fileID: 5148544426392368616}
   - component: {fileID: 193570932568765195}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CaneBorer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -219,6 +219,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: caneBorer
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 6f1f9e8bb792b4144828e85e0505f1d6,
+        type: 3}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6f1f9e8bb792b4144828e85e0505f1d6, type: 3}

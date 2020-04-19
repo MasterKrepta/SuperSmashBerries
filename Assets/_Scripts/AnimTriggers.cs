@@ -6,7 +6,7 @@ public class AnimTriggers : MonoBehaviour
 {
     public GameObject Projectile;
     public Transform throwPoint;
-    public float moveSpeed = 10f;
+    public float moveSpeed = 30f;
     public float throwDelay = 0.75f;
     bool canThrow = true;
 

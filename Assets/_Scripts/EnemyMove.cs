@@ -9,11 +9,14 @@ public class EnemyMove : MonoBehaviour
     public Transform currentTarget;
     public float moveSpeed = 5f;
 
+ 
+
     public float DistanceToPlayer;
     public float DistanceToBase;
 
     private void OnEnable()
     {
+        
         GameTriggers.OnPlayerAssigned += AssignPlayer;
     }
 
@@ -53,7 +56,7 @@ public class EnemyMove : MonoBehaviour
         }
 
 
-        transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed);
+        transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, moveSpeed);
         transform.LookAt(currentTarget.position);
         //print("Moving to " + currentTarget.name);
     }

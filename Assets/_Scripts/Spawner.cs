@@ -24,12 +24,12 @@ public class Spawner : MonoBehaviour
 
     private void OnEnable()
     {
-        GameTriggers.OnWaveEnd += IncrementWave;
+        GameTriggers.OnPlayerAssigned += IncrementWave;
     }
 
     private void OnDisable()
     {
-        GameTriggers.OnWaveEnd -= IncrementWave;
+        GameTriggers.OnPlayerAssigned -= IncrementWave;
     }
 
     public void StartWave()

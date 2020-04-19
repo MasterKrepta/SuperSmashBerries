@@ -7,6 +7,7 @@ public class DamageDealer : MonoBehaviour
     
     public float dmgAmount = 2f;
     Collider col;
+    
 
     private void Start()
     {
@@ -15,14 +16,20 @@ public class DamageDealer : MonoBehaviour
     }
 
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         var target = other.GetComponentInParent<IDamagable>();
         if (target != null)
         {
             //print(this.name + " caused death");
+            
             target.TakeDamage(dmgAmount);
         }
+
     }
+
+ 
+
+
 
 }

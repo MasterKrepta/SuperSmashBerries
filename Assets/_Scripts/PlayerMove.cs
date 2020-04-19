@@ -9,7 +9,7 @@ public class PlayerMove : MonoBehaviour
     public float JumpHeight = 10f;
     [SerializeField] float fallMulti = 10f;
     [SerializeField] float lowJumpMulti = 2f;
-
+    
     
 
     public float GroundDistance = 0.2f;
@@ -21,10 +21,31 @@ public class PlayerMove : MonoBehaviour
     private bool _isGrounded = true;
     private Transform grounded;
 
+    Vector3 originalPos;
+    Quaternion origRot;
+
+    private void OnEnable()
+    {
+        GameTriggers.OnPlayerAssigned += ResetPos;
+    }
+    private void OnDisable()
+    {
+        GameTriggers.OnPlayerAssigned -= ResetPos;
+    }
     void Start()
     {
+        originalPos = transform.position;
+        origRot = transform.rotation;
+
         rb = GetComponent<Rigidbody>();
         grounded = transform.GetChild(0);
+    }
+
+
+    void ResetPos()
+    {
+        //transform.position = originalPos;
+        //transform.rotation = Quaternion.identity;
     }
 
     void Update()
@@ -50,6 +71,19 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
             rb.AddForce(Vector3.up * JumpHeight, ForceMode.Impulse);
+        }
+
+        if (Input.GetKey(KeyCode.LeftShift))
+        {
+            Speed = 30;
+        }
+
+        if (true)
+        {
+            if (Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                Speed = 15;
+            }
         }
 
     }

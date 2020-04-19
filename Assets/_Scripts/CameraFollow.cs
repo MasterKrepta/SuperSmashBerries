@@ -6,6 +6,7 @@ public class CameraFollow : MonoBehaviour
 {
     [SerializeField] Transform player, cameraPivot;
     [SerializeField] Vector3 offset;
+    
     public Vector3 camOffset;
     public float rotSpeed = 1;
 
@@ -14,6 +15,7 @@ public class CameraFollow : MonoBehaviour
 
     private void OnEnable()
     {
+        
         GameTriggers.OnPlayerAssigned += AssignPlayer;
     }
 
@@ -27,8 +29,14 @@ public class CameraFollow : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
         cameraPivot = player.GetChild(2);
+        cameraPivot.transform.rotation = Quaternion.identity;
+        transform.rotation = Quaternion.identity;
+
         transform.position = player.position + offset;
         Camera.main.transform.parent = cameraPivot;
+
+        
+
     }
 
     // Use this for initialization
