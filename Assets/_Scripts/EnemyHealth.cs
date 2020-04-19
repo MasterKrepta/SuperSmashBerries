@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class EnemyHealth : MonoBehaviour, IDamagable
 {
+    
+
+
 
     private void OnEnable()
     {
@@ -27,4 +30,6 @@ public class EnemyHealth : MonoBehaviour, IDamagable
     {
         Destroy(gameObject);
     }
+
+
 }

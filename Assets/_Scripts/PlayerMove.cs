@@ -24,15 +24,7 @@ public class PlayerMove : MonoBehaviour
     Vector3 originalPos;
     Quaternion origRot;
 
-    private void OnEnable()
-    {
-        GameTriggers.OnPlayerAssigned += ResetPos;
-    }
-    private void OnDisable()
-    {
-        GameTriggers.OnPlayerAssigned -= ResetPos;
-    }
-    void Start()
+      void Start()
     {
         originalPos = transform.position;
         origRot = transform.rotation;
@@ -41,17 +33,8 @@ public class PlayerMove : MonoBehaviour
         grounded = transform.GetChild(0);
     }
 
-
-    void ResetPos()
-    {
-        //transform.position = originalPos;
-        //transform.rotation = Quaternion.identity;
-    }
-
     void Update()
     {
-        
-        
         _isGrounded = Physics.CheckSphere(grounded.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
 
 
@@ -59,14 +42,6 @@ public class PlayerMove : MonoBehaviour
         float ver = Input.GetAxis("Vertical");
         Vector3 playerMovement = new Vector3(hor, 0f, ver) * Speed * Time.deltaTime;
         transform.Translate(playerMovement, Space.Self);
-
-
-
-        //input = Vector3.zero;
-        //input.x = Input.GetAxis("Horizontal");
-        //input.z = Input.GetAxis("Vertical");
-        //if (input != Vector3.zero)
-        //    transform.forward = input;
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
@@ -77,14 +52,16 @@ public class PlayerMove : MonoBehaviour
         {
             Speed = 30;
         }
-
-        if (true)
+        else
         {
-            if (Input.GetKeyUp(KeyCode.LeftShift))
-            {
-                Speed = 15;
-            }
+            Speed = 15;
         }
+
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //    GameTriggers.OnGameEnd();
+        //}
+
 
     }
 

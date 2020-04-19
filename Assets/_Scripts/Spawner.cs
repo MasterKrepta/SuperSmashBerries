@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class Spawner : MonoBehaviour
 {
-    
-
-
+    public TMP_Text enemiesTxt;
     public Transform[] Enemies;
     public Transform[] SpawnPoints;
     public float StartTime = 5f;
@@ -35,8 +35,39 @@ public class Spawner : MonoBehaviour
     public void StartWave()
     {
         enemiesRemaining = 0;
+        UpdateEnemyText();
         InvokeRepeating("SpawnEnemy", delayBetweenSpawn, delayBetweenSpawn);
     }
+
+    //private void Update()
+    //{
+    //    Time.timeScale = 1;
+    //    if (Input.GetKeyDown(KeyCode.Alpha0))
+    //    {
+    //        int randEnemy = Random.Range(0, Enemies.Length);
+    //        Instantiate(Enemies[randEnemy], SpawnPoints[0].position, Quaternion.identity);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha1))
+    //    {
+    //        int randEnemy = Random.Range(0, Enemies.Length);
+    //        Instantiate(Enemies[randEnemy], SpawnPoints[1].position, Quaternion.identity);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha2))
+    //    {
+    //        int randEnemy = Random.Range(0, Enemies.Length);
+    //        Instantiate(Enemies[randEnemy], SpawnPoints[2].position, Quaternion.identity);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha3))
+    //    {
+    //        int randEnemy = Random.Range(0, Enemies.Length);
+    //        Instantiate(Enemies[randEnemy], SpawnPoints[3].position, Quaternion.identity);
+    //    }
+    //    if (Input.GetKeyDown(KeyCode.Alpha4))
+    //    {
+    //        int randEnemy = Random.Range(0, Enemies.Length);
+    //        Instantiate(Enemies[randEnemy], SpawnPoints[4].position, Quaternion.identity);
+    //    }
+    //}
 
 
     void SpawnEnemy()
@@ -51,6 +82,7 @@ public class Spawner : MonoBehaviour
             int randSpawnPoints = Random.Range(0, SpawnPoints.Length);
 
             Instantiate(Enemies[randEnemy], SpawnPoints[randSpawnPoints].position, Quaternion.identity);
+            UpdateEnemyText();
         }
         else
         {
@@ -63,6 +95,7 @@ public class Spawner : MonoBehaviour
     {
         
         enemiesRemaining--;
+        UpdateEnemyText();
 
         if (enemiesRemaining <= 0 )
         {
@@ -81,5 +114,9 @@ public class Spawner : MonoBehaviour
     }
 
 
+    void UpdateEnemyText()
+    {
+        enemiesTxt.text = $"Enemies: { Mathf.Clamp( enemiesRemaining, 0, numEnemies).ToString()}";
+    }
     
 }

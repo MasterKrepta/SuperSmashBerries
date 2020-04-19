@@ -20,6 +20,7 @@ public class PlayerAttack : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && canAttack){
         {
                 anim.SetTrigger("Attack");
+                GetComponentInChildren<AudioSource>().Play();
                 StartCoroutine(ToggleAttack());
         }
     }

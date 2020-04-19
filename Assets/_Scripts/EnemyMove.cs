@@ -55,6 +55,10 @@ public class EnemyMove : MonoBehaviour
             TargetBase();
         }
 
+        if (DistanceToPlayer > 2000  || DistanceToBase > 2000)
+        {
+            this.GetComponent<IDamagable>().TakeDamage(5000); // Make sure they die
+        }
 
         transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, moveSpeed);
         transform.LookAt(currentTarget.position);
