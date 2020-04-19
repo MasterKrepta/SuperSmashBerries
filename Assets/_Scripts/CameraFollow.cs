@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
 {
-    [SerializeField] Transform player;
+    [SerializeField] Transform player, cameraPivot;
     [SerializeField] Vector3 offset;
-    [SerializeField] float smoothing = 0.3f;
-    [SerializeField] float maxSpeed = 10;
+    public Vector3 camOffset;
+    public float rotSpeed = 1;
 
-    Vector3 vel = Vector3.zero;
+    Vector2 mouseDir = Vector2.zero;
 
 
     private void OnEnable()
@@ -26,11 +26,15 @@ public class CameraFollow : MonoBehaviour
     void AssignPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        cameraPivot = player.GetChild(2);
+        transform.position = player.position + offset;
+        Camera.main.transform.parent = cameraPivot;
     }
 
     // Use this for initialization
     void Awake()
     {
+        
         AssignPlayer();
         transform.position = player.position + offset;
     }
@@ -38,10 +42,17 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void LateUpdate()
     {
+        mouseDir.x += Input.GetAxis("Mouse X") * rotSpeed;
+        mouseDir.y -= Input.GetAxis("Mouse Y") * rotSpeed;
+        mouseDir.y = Mathf.Clamp(mouseDir.y, -35, 60);
+
         
-        Vector3 targetPos = player.TransformPoint(offset);
-        transform.LookAt(player);
-        transform.position = Vector3.SmoothDamp(transform.position, targetPos, ref vel, smoothing, maxSpeed);
+        transform.LookAt(cameraPivot);
+
+        cameraPivot.rotation = Quaternion.Euler(mouseDir.y, mouseDir.x, 0);
+        player.rotation = Quaternion.Euler(0, mouseDir.x, 0);
+
+        
 
     }
 }

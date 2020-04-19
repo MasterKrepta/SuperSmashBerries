@@ -31,21 +31,27 @@ public class PlayerMove : MonoBehaviour
         _isGrounded = Physics.CheckSphere(grounded.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
 
 
-        input = Vector3.zero;
-        input.x = Input.GetAxis("Horizontal");
-        input.z = Input.GetAxis("Vertical");
-        if (input != Vector3.zero)
-            transform.forward = input;
+        float hor = Input.GetAxis("Horizontal");
+        float ver = Input.GetAxis("Vertical");
+        Vector3 playerMovement = new Vector3(hor, 0f, ver) * Speed * Time.deltaTime;
+        transform.Translate(playerMovement, Space.Self);
+
+
+
+        //input = Vector3.zero;
+        //input.x = Input.GetAxis("Horizontal");
+        //input.z = Input.GetAxis("Vertical");
+        //if (input != Vector3.zero)
+        //    transform.forward = input;
 
         if (Input.GetButtonDown("Jump") && _isGrounded)
         {
             rb.AddForce(Vector3.up * JumpHeight, ForceMode.Impulse);
-            
         }
-        
+
     }
 
-    
+
     private void ModifyVelocityWhenJumping()
     {
 
@@ -67,8 +73,8 @@ public class PlayerMove : MonoBehaviour
         {
             ModifyVelocityWhenJumping();
         }
-        
-        rb.MovePosition(rb.position + input * Speed * Time.fixedDeltaTime);
+
+        //rb.MovePosition(rb.position + input * Speed * Time.fixedDeltaTime);
     }
 
 }

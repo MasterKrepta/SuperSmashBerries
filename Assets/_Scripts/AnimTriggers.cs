@@ -7,6 +7,8 @@ public class AnimTriggers : MonoBehaviour
     public GameObject Projectile;
     public Transform throwPoint;
     public float moveSpeed = 10f;
+    public float throwDelay = 0.75f;
+    bool canThrow = true;
 
     public void AttackToggle()
     {
@@ -20,8 +22,21 @@ public class AnimTriggers : MonoBehaviour
 
     public void Throw()
     {
-        GameObject go =  Instantiate(Projectile, throwPoint.position, Quaternion.identity);
-        Rigidbody rb = go.GetComponent<Rigidbody>();
-        rb.AddForce(throwPoint.forward * moveSpeed, ForceMode.Impulse);
+        if (canThrow)
+        {
+            GameObject go = Instantiate(Projectile, throwPoint.position, Quaternion.identity);
+            Rigidbody rb = go.GetComponent<Rigidbody>();
+            rb.AddForce(throwPoint.forward * moveSpeed, ForceMode.Impulse);
+            ThrowDelay();
+        }
+        
+    }
+
+
+    IEnumerator ThrowDelay()
+    {
+        yield return new WaitForSeconds(throwDelay);
+        canThrow = true;
+
     }
 }

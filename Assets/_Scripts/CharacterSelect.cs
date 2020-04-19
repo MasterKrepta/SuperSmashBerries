@@ -38,6 +38,8 @@ public class CharacterSelect : MonoBehaviour
 
     private void DisplaySelectScreen()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         selectscreen.SetActive(true);
         DisablePlayerScripts();
         Time.timeScale = 0;
@@ -58,6 +60,8 @@ public class CharacterSelect : MonoBehaviour
         character.tag = "Player";
         GameTriggers.OnPlayerAssigned();
         selectscreen.SetActive(false);
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         Time.timeScale = 1;
     }
 

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1353727447
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1353727448}
+  m_Layer: 0
+  m_Name: CameraPivot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1353727448
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353727447}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.85, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2881716816817845486}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &2608532382217418601
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -13,34 +43,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1.104563
   m_Center: {x: 0.39, y: 0, z: 0}
---- !u!114 &2648277284182878795
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564252098456018513}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fddbe5349a61eae40ab5fb8dbe8838cf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgAmount: 2
---- !u!114 &254284599
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1319919567151184728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 105803ce3dbba6d4bbed4ad6350fd7b0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Projectile: {fileID: 6566004201615285297, guid: f25dd2f438196d041ab40b00b19f0c07,
-    type: 3}
-  throwPoint: {fileID: 3571347442163756098}
 --- !u!95 &5177670142832124382
 Animator:
   serializedVersion: 3
@@ -60,19 +62,23 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!135 &7710945099505533339
-SphereCollider:
+--- !u!114 &254284599
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7068163221120490683}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Radius: 1.0122622
-  m_Center: {x: 0, y: -0.33, z: 0.063791156}
+  m_GameObject: {fileID: 1319919567151184728}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 105803ce3dbba6d4bbed4ad6350fd7b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Projectile: {fileID: 6566004201615285297, guid: f25dd2f438196d041ab40b00b19f0c07,
+    type: 3}
+  throwPoint: {fileID: 3571347442163756098}
+  moveSpeed: 20
+  throwDelay: 0.75
 --- !u!114 &7018925128069251256
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -120,6 +126,7 @@ Transform:
   m_Children:
   - {fileID: 6726238597540910070}
   - {fileID: 2596907937275627851}
+  - {fileID: 1353727448}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -137,7 +144,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 112
   m_CollisionDetection: 0
 --- !u!65 &7701282981841817438
 BoxCollider:
