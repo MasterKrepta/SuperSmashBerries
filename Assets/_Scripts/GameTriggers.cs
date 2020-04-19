@@ -7,4 +7,5 @@ public static class GameTriggers
 {
     public static Action OnPlayerAssigned;
     public static Action OnWaveEnd;
+    public static Action OnCharSelect;
 }

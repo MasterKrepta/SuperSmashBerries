@@ -10,6 +10,8 @@ public class PlayerMove : MonoBehaviour
     [SerializeField] float fallMulti = 10f;
     [SerializeField] float lowJumpMulti = 2f;
 
+    
+
     public float GroundDistance = 0.2f;
     
     public LayerMask Ground;
@@ -27,6 +29,7 @@ public class PlayerMove : MonoBehaviour
 
     void Update()
     {
+        
         
         _isGrounded = Physics.CheckSphere(grounded.position, GroundDistance, Ground, QueryTriggerInteraction.Ignore);
 

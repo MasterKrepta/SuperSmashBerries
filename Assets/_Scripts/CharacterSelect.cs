@@ -38,6 +38,7 @@ public class CharacterSelect : MonoBehaviour
 
     private void DisplaySelectScreen()
     {
+        GameTriggers.OnCharSelect();
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         selectscreen.SetActive(true);

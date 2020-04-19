@@ -2,23 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour, IDamagable
+public class BaseHealth : MonoBehaviour, IDamagable
 {
     public float MaxHealth = 100f;
     public float CurrentHealth;
 
     public void TakeDamage(float dmg)
     {
-        print("Player takes damage");
-        CurrentHealth--;
-
-        
+        print("Base takes damage");
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        CurrentHealth = MaxHealth;
+        
     }
 
     // Update is called once per frame

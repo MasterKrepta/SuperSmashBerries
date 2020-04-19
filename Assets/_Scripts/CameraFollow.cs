@@ -35,8 +35,8 @@ public class CameraFollow : MonoBehaviour
     void Awake()
     {
         
-        AssignPlayer();
-        transform.position = player.position + offset;
+        //AssignPlayer();
+        //transform.position = player.position + offset;
     }
 
     // Update is called once per frame

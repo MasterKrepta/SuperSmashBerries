@@ -5,7 +5,12 @@ using UnityEngine;
 public class EnemyMove : MonoBehaviour
 {
     public Transform player;
+    public Transform BaseTarget;
+    public Transform currentTarget;
     public float moveSpeed = 5f;
+
+    public float DistanceToPlayer;
+    public float DistanceToBase;
 
     private void OnEnable()
     {
@@ -20,12 +25,15 @@ public class EnemyMove : MonoBehaviour
 
     private void Start()
     {
+        BaseTarget = GameObject.FindGameObjectWithTag("Base").transform;
         AssignPlayer(); 
     }
     
     void AssignPlayer()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
+        currentTarget = player;
+        
     }
 
 
@@ -33,7 +41,32 @@ public class EnemyMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        DistanceToBase = Vector3.Distance(BaseTarget.position, transform.position);
+        DistanceToPlayer = Vector3.Distance(player.position, transform.position);
+        if (DistanceToPlayer < DistanceToBase)
+        {
+            TargetPlayer();
+        }
+        else
+        {
+            TargetBase();
+        }
+
+
         transform.position = Vector3.MoveTowards(transform.position, player.position, moveSpeed);
-        transform.LookAt(player.position);
+        transform.LookAt(currentTarget.position);
+        //print("Moving to " + currentTarget.name);
+    }
+
+
+    void TargetPlayer()
+    {
+        
+        AssignPlayer();
+    }
+
+    void TargetBase()
+    {
+        currentTarget = BaseTarget;
     }
 }
