@@ -91,7 +91,7 @@ MonoBehaviour:
   player: {fileID: 0}
   BaseTarget: {fileID: 0}
   currentTarget: {fileID: 0}
-  moveSpeed: 0.15
+  moveSpeed: 10
   DistanceToPlayer: 0
   DistanceToBase: 0
 --- !u!1 &1752777153032050158

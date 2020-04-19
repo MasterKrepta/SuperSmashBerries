@@ -1,13 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class EnemyMove : MonoBehaviour
 {
     public Transform player;
     public Transform BaseTarget;
     public Transform currentTarget;
-    public float moveSpeed = 5f;
+    public float moveSpeed = 0.15f;
+    NavMeshAgent agent;
 
  
 
@@ -28,6 +30,7 @@ public class EnemyMove : MonoBehaviour
 
     private void Start()
     {
+        //agent = GetComponent<NavMeshAgent>();
         BaseTarget = GameObject.FindGameObjectWithTag("Base").transform;
         AssignPlayer(); 
     }
@@ -59,8 +62,8 @@ public class EnemyMove : MonoBehaviour
         {
             this.GetComponent<IDamagable>().TakeDamage(5000); // Make sure they die
         }
-
-        transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, moveSpeed);
+        //agent.SetDestination(currentTarget.position);
+        transform.position = Vector3.MoveTowards(transform.position, currentTarget.position, moveSpeed * Time.deltaTime);
         transform.LookAt(currentTarget.position);
         //print("Moving to " + currentTarget.name);
     }
