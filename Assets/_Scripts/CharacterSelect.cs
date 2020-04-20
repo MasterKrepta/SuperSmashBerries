@@ -62,6 +62,7 @@ public class CharacterSelect : MonoBehaviour
 
         activeCharacter = character;
         character.tag = "Player";
+        character.gameObject.layer = 12;
         GameTriggers.OnPlayerAssigned();
         selectscreen.SetActive(false);
         Cursor.visible = false;
@@ -79,6 +80,7 @@ public class CharacterSelect : MonoBehaviour
                 s.enabled = false;
             }
             c.tag = "Untagged";
+            c.gameObject.layer = 0;
         }
 
     }
